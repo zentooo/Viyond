@@ -5,8 +5,8 @@ use Test::More;
 use Data::Util;
 
 use lib 'lib';
-use M9::Action::Install;
-use M9::Action::Remove;
+use Viyond::Action::Install;
+use Viyond::Action::Remove;
 
 BEGIN { use_ok '::Action::Upgrade' }
 
@@ -20,7 +20,7 @@ BEGIN { use_ok '::Action::Upgrade' }
     description => "This repository data points zentooo's great plugin, but this description is dummy for test.",
 });
 
-ok(-d M9::Config->get_value('m9_path') . "/repos/fakeplugin_dir:repo-fakeupgrade", "fake repo has created");
+ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir:repo-fakeupgrade", "fake repo has created");
 
 ::Action::Upgrade->upgrade("fakeplugin_dir");
 
@@ -43,8 +43,8 @@ ok(-d M9::Config->get_value('m9_path') . "/repos/fakeplugin_dir:repo-fakeupgrade
     description => "This repository data points zentooo's great plugin, but this description is dummy for test.",
 });
 
-ok(-d M9::Config->get_value('m9_path') . "/repos/vimproc:repo-fakeupgrade1", "fake repo has created");
-ok(-d M9::Config->get_value('m9_path') . "/repos/fakeplugin_file:repo-fakeupgrade2", "fake repo has created");
+ok(-d Viyond::Config->get_value('viyond_path') . "/repos/vimproc:repo-fakeupgrade1", "fake repo has created");
+ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_file:repo-fakeupgrade2", "fake repo has created");
 
 ::Action::Upgrade->upgrade_all;
 

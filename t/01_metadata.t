@@ -6,13 +6,13 @@ use YAML::Tiny;
 use File::Copy::Recursive qw/pathmk/;
 
 use lib 'lib';
-use M9::Config;
-use M9::InstallData::Metadata;
+use Viyond::Config;
+use Viyond::InstallData::Metadata;
 
 # load_all
-pathmk(::Config->get_value('m9_path'));
+pathmk(::Config->get_value('viyond_path'));
 
-my $emptydata = M9::InstallData::Metadata->load_all;
+my $emptydata = Viyond::InstallData::Metadata->load_all;
 ok($emptydata);
 
 
@@ -33,12 +33,12 @@ my $repository = +{
 };
 ::InstallData::Metadata->add_entry($git_uri, $repo_path, $repository);
 
-my $metadata = M9::InstallData::Metadata->load_all;
+my $metadata = Viyond::InstallData::Metadata->load_all;
 my $repo = $metadata->[0]->{"$name:$id"};
 
 is( $repo->{git_uri}, $git_uri, "github uri is equal to the original");
 
 
-system('rm -f ' . M9::Config->get_value('m9_path') . '/metadata.yaml');
+system('rm -f ' . Viyond::Config->get_value('viyond_path') . '/metadata.yaml');
 
 done_testing;

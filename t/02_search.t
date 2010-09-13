@@ -4,7 +4,7 @@ use Test::More;
 use Data::Dump qw/dump/;
 
 use lib 'lib';
-use M9::Config;
+use Viyond::Config;
 
 BEGIN { use_ok '::Command::Search' }
 

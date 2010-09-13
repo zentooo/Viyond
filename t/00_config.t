@@ -6,16 +6,16 @@ use Data::Util;
 
 use lib 'lib';
 
-BEGIN { use_ok ' M9::Config' }
+BEGIN { use_ok ' Viyond::Config' }
 
 # test default settings
 
-my $config_path = "$ENV{'HOME'}/.m9rc";
+my $config_path = "$ENV{'HOME'}/.viyondrc";
 my @config_keys = qw/nightly force_remove/;
 
 if ( -e $config_path ) {
   for my $key (@config_keys) {
-    my $value = M9::Config->get_value($key);
+    my $value = Viyond::Config->get_value($key);
     ok($value == 0 || $value == 1);
   }
 }

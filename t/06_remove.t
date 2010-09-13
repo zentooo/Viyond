@@ -5,8 +5,8 @@ use Test::Most;
 use Data::Util;
 
 use lib 'lib';
-use M9::InstallData::Metadata;
-use M9::Action::Install;
+use Viyond::InstallData::Metadata;
+use Viyond::Action::Install;
 
 BEGIN { use_ok '::Action::Remove' }
 
@@ -17,12 +17,12 @@ BEGIN { use_ok '::Action::Remove' }
     description => "This repository data points Shougo's great plugin, but this description is dummy for test.",
 });
 
-ok(-d M9::Config->get_value('m9_path') . "/repos/fakeplugin_dir:repo-fakeremove", "fake repo has created");
+ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir:repo-fakeremove", "fake repo has created");
 
 ::Action::Remove->remove("fakeplugin_dir");
 
-ok(! -d M9::Config->get_value('m9_path') . "/repos/fakeplugin_dir:repo-fakeremove", "fake repo has removed");
-ok(! -f M9::Config->get_value('m9_path') . "/filelog/fakeplugin_dir:repo-fakeremove", "fake repo's filelog has removed");
+ok(! -d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir:repo-fakeremove", "fake repo has removed");
+ok(! -f Viyond::Config->get_value('viyond_path') . "/filelog/fakeplugin_dir:repo-fakeremove", "fake repo's filelog has removed");
 
 is(::InstallData::Metadata->load_all->[0]->{"fakeplugin_dir:repo-fakeremove"}, undef, "feke repo metadata has removed");
 
