@@ -1,0 +1,8 @@
+#!perl
+
+use strict;
+use warnings;
+
+use M9;
+
+M9->run;
