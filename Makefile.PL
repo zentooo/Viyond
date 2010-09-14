@@ -1,6 +1,6 @@
 use inc::Module::Install;
-name 'M9';
-all_from 'lib/M9.pm';
+name 'Viyond';
+all_from 'lib/Viyond.pm';
 
 requires 'App::Cmd';
 requires 'Config::Any';
@@ -19,7 +19,7 @@ requires 'YAML::Tiny';
 
 tests 't/*.t';
 
-install_script 'bin/m9';
+install_script 'bin/viyond';
 
 test_requires 'Test::More';
 auto_include;

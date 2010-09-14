@@ -1,19 +1,19 @@
 NAME
-    M9 - Vim plugin manager which uses github as repository.
+    Viyond - Vim plugin manager which uses github as repository.
 
 SYNOPSIS
-      m9 search neocomplcache   - search and install vim plugin
-      m9 list                   - list all installed vim plugins
-      m9 remove neocomplcache   - remove existing plugin
-      m9 remove -all            - remove all existing plugins
-      m9 upgrade                - upgrade all existing plugins
-      m9 upgrade neocomplcache  - upgrade specified plugin
-      m9 add                    - execute 'git add' after chdir to .vim and .m9 with ignoring .vim/view
+      viyond search neocomplcache   - search and install vim plugin
+      viyond list                   - list all installed vim plugins
+      viyond remove neocomplcache   - remove existing plugin
+      viyond remove -all            - remove all existing plugins
+      viyond upgrade                - upgrade all existing plugins
+      viyond upgrade neocomplcache  - upgrade specified plugin
+      viyond add                    - execute 'git add' after chdir to .vim and .viyond with ignoring .vim/view
 
 DESCRIPTION
-    M9 is Vim plugin manager. It uses github as a repository for
+    Viyond is Vim plugin manager. It uses github as a repository for
     searching, installing and upgrading plugins. It also privides functions
-    as removing and listing vim plugins installed via m9 command.
+    as removing and listing vim plugins installed via viyond command.
 
 AUTHOR
     zentooo <ankerasoy@gmail.com>

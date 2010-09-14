@@ -21,8 +21,8 @@ if ( -e $config_path ) {
 }
 else {
   # test default settings
-  is(::Config->get_value('nightly'), 1);
-  is(::Config->get_value('force_remove'), 0);
+  is(Viyond::Config->get_value('nightly'), 1);
+  is(Viyond::Config->get_value('force_remove'), 0);
 }
 
 

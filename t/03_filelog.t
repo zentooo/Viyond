@@ -21,7 +21,7 @@ dies_ok {
 # save
 
 my @files = qw(t/03_filelog.t t/03_filelog.t);
-::InstallData::Filelog->save($repo_id, \@files);
+Viyond::InstallData::Filelog->save($repo_id, \@files);
 my $filelog = Viyond::InstallData::Filelog->load($repo_id);
 
 my @filenames = map {

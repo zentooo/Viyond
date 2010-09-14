@@ -6,7 +6,7 @@ use Data::Dump qw/dump/;
 use lib 'lib';
 use Viyond::Config;
 
-BEGIN { use_ok '::Command::Search' }
+BEGIN { use_ok 'Viyond::Command::Search' }
 
 
 # fetch

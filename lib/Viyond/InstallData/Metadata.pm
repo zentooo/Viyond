@@ -5,7 +5,6 @@ use warnings;
 
 use Viyond::Config;
 use YAML::Tiny;
-use Hash::Merge::Simple qw/merge/;
 use Carp;
 
 my $metadata_file = Viyond::Config->get_value('viyond_path') . '/metadata.yaml';

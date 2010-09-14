@@ -10,7 +10,7 @@ use Viyond::Config;
 use Viyond::InstallData::Metadata;
 
 # load_all
-pathmk(::Config->get_value('viyond_path'));
+pathmk(Viyond::Config->get_value('viyond_path'));
 
 my $emptydata = Viyond::InstallData::Metadata->load_all;
 ok($emptydata);
@@ -31,7 +31,7 @@ my $repository = +{
   pushed => $pushed,
   description => $description,
 };
-::InstallData::Metadata->add_entry($git_uri, $repo_path, $repository);
+Viyond::InstallData::Metadata->add_entry($git_uri, $repository);
 
 my $metadata = Viyond::InstallData::Metadata->load_all;
 my $repo = $metadata->[0]->{"$name:$id"};

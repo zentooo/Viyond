@@ -8,9 +8,9 @@ use lib 'lib';
 use Viyond::InstallData::Metadata;
 use Viyond::Action::Install;
 
-BEGIN { use_ok '::Action::Remove' }
+BEGIN { use_ok 'Viyond::Action::Remove' }
 
-::Action::Install->install(+{
+Viyond::Action::Install->install(+{
     username => "zentooo",
     name => "fakeplugin_dir",
     id => "repo-fakeremove",
@@ -19,12 +19,12 @@ BEGIN { use_ok '::Action::Remove' }
 
 ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir:repo-fakeremove", "fake repo has created");
 
-::Action::Remove->remove("fakeplugin_dir");
+Viyond::Action::Remove->remove("fakeplugin_dir");
 
 ok(! -d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir:repo-fakeremove", "fake repo has removed");
 ok(! -f Viyond::Config->get_value('viyond_path') . "/filelog/fakeplugin_dir:repo-fakeremove", "fake repo's filelog has removed");
 
-is(::InstallData::Metadata->load_all->[0]->{"fakeplugin_dir:repo-fakeremove"}, undef, "feke repo metadata has removed");
+is(Viyond::InstallData::Metadata->load_all->[0]->{"fakeplugin_dir:repo-fakeremove"}, undef, "feke repo metadata has removed");
 
 
 ok(1);
