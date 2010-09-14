@@ -1,5 +1,6 @@
 NAME
-    Viyond - Vim plugin manager which uses github as repository.
+    Viyond - Vim plugin manager which uses github as repository. It's still
+    experimental one, so be careful to use.
 
 SYNOPSIS
       viyond search neocomplcache   - search and install vim plugin
@@ -11,9 +12,18 @@ SYNOPSIS
       viyond add                    - execute 'git add' after chdir to .vim and .viyond with ignoring .vim/view
 
 DESCRIPTION
-    Viyond is Vim plugin manager. It uses github as a repository for
-    searching, installing and upgrading plugins. It also privides functions
-    as removing and listing vim plugins installed via viyond command.
+    Viyond is Vim plugin manager, inspired by Vimana and Yaourt. It uses
+    github as a repository for searching, installing and upgrading plugins.
+    It also privides functions as removing and listing vim plugins
+    installed. Currently it does not support vim-plugin management style
+    with pathogen and git submodule.
+
+CONFIGURATION
+    You can use Viyond with your own config file ($HOME/.viyondrc) with JSON
+    format.
+
+    { "viyond_path": "/home/neko/.viyond", "vimfiles_path":
+    "/home/neko/.vim" }
 
 AUTHOR
     zentooo <ankerasoy@gmail.com>

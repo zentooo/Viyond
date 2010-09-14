@@ -17,7 +17,7 @@ __END__
 
 =head1 NAME
 
-Viyond - Vim plugin manager which uses github as repository.
+Viyond - Vim plugin manager which uses github as repository. It's still experimental one, so be careful to use.
 
 =head1 SYNOPSIS
 
@@ -31,8 +31,18 @@ Viyond - Vim plugin manager which uses github as repository.
 
 =head1 DESCRIPTION
 
-Viyond is Vim plugin manager. It uses github as a repository for searching, installing and upgrading plugins.
-It also privides functions as removing and listing vim plugins installed via viyond command.
+Viyond is Vim plugin manager, inspired by Vimana and Yaourt. It uses github as a repository for searching, installing and upgrading plugins.
+It also privides functions as removing and listing vim plugins installed.
+Currently it does not support vim-plugin management style with pathogen and git submodule.
+
+=head1 CONFIGURATION
+
+You can use Viyond with your own config file ($HOME/.viyondrc) with JSON format.
+
+{
+  "viyond_path": "/home/neko/.viyond",
+  "vimfiles_path": "/home/neko/.vim"
+}
 
 =head1 AUTHOR
 

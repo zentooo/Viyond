@@ -1,6 +1,7 @@
 use inc::Module::Install;
 name 'Viyond';
 all_from 'lib/Viyond.pm';
+readme_from 'lib/Viyond.pm';
 
 requires 'App::Cmd';
 requires 'Config::Any';
