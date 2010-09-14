@@ -19,6 +19,7 @@ sub run {
   {
     local $CWD = $vimfiles_path;
     for my $dir (dir($CWD)->children) {
+      next unless $dir->is_dir;
       $dir =~ s/$vimfiles_path\///;
       next if $dir =~ /view/;
       system("git add $dir/*");
