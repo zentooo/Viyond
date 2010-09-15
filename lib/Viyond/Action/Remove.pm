@@ -18,9 +18,9 @@ my $vimfiles_path = Viyond::Config->get_value('vimfiles_path');
 sub remove {
   my ($class, $name) = @_;
 
-  my $metadata = Viyond::InstallData::Metadata->load_all->[0];
+  my $metadata = Viyond::InstallData::Metadata->load_all;
 
-  my @repo_ids = grep /^$name:repo-\w+$/, keys %$metadata;
+  my @repo_ids = grep /^$name-repo-\w+$/, keys %$metadata;
 
   if ( scalar @repo_ids == 0 ) {
     say"we cannot find the vim plugin named $name";

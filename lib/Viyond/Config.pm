@@ -3,7 +3,7 @@ package Viyond::Config;
 use strict;
 use warnings;
 
-use JSON::XS;
+use JSON;
 use Path::Class;
 use Hash::Merge::Simple qw/merge/;
 use File::Copy::Recursive qw/pathmk/;

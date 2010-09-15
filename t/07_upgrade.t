@@ -20,7 +20,7 @@ Viyond::Action::Install->install(+{
     description => "This repository data points zentooo's great plugin, but this description is dummy for test.",
 });
 
-ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir:repo-fakeupgrade", "fake repo has created");
+ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir-repo-fakeupgrade", "fake repo has created");
 
 Viyond::Action::Upgrade->upgrade("fakeplugin_dir");
 
@@ -43,8 +43,8 @@ Viyond::Action::Install->install(+{
     description => "This repository data points zentooo's great plugin, but this description is dummy for test.",
 });
 
-ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir:repo-fakeupgrade1", "fake repo has created");
-ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_file:repo-fakeupgrade2", "fake repo has created");
+ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir-repo-fakeupgrade1", "fake repo has created");
+ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_file-repo-fakeupgrade2", "fake repo has created");
 
 Viyond::Action::Upgrade->upgrade_all;
 

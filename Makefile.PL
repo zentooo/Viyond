@@ -10,12 +10,11 @@ requires 'File::Path';
 requires 'File::chdir';
 requires 'HTTP::Status';
 requires 'Hash::Merge::Simple';
-requires 'JSON::XS';
+requires 'JSON';
 requires 'LWP::UserAgent';
 requires 'Path::Class';
 requires 'Term::ANSIColor';
 requires 'Try::Tiny';
-requires 'YAML::Tiny';
 
 tests 't/*.t';
 

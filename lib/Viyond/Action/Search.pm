@@ -5,7 +5,7 @@ use warnings;
 
 use LWP::UserAgent;
 use HTTP::Status;
-use JSON::XS;
+use JSON;
 
 use Term::ANSIColor qw/:constants/;
 
@@ -63,7 +63,7 @@ sub print_repos {
 
   return 0 if scalar @$repositories == 0;
 
-  my @installed_repo_ids = keys %{Viyond::InstallData::Metadata->load_all->[0]};
+  my @installed_repo_ids = keys %{Viyond::InstallData::Metadata->load_all};
 
   $Term::ANSIColor::AUTORESET = 1;
   my $repos_num = 1;
@@ -73,7 +73,7 @@ sub print_repos {
     print " ";
     print BOLD WHITE "$repository->{username}/";
     print BOLD CYAN $repository->{name};
-    if ( grep { $_ eq "$repository->{name}:$repository->{id}" } @installed_repo_ids ) {
+    if ( grep { $_ eq "$repository->{name}-$repository->{id}" } @installed_repo_ids ) {
       print " ";
       print BOLD WHITE ON_MAGENTA "[installed]";
     }

@@ -12,7 +12,7 @@ use Viyond::InstallData::Metadata;
 sub run {
   my ($self, $opt, $args) = @_;
 
-  my $metadata = Viyond::InstallData::Metadata->load_all->[0];
+  my $metadata = Viyond::InstallData::Metadata->load_all;
 
   $Term::ANSIColor::AUTORESET = 1;
 

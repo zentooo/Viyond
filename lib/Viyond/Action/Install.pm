@@ -19,10 +19,10 @@ pathmk $clone_dir unless -d $clone_dir;
 sub install {
   my ($class, $repository) = @_;
   my $git_uri = "git://github.com/$repository->{username}/$repository->{name}.git";
-  my $repo_id = "$repository->{name}:$repository->{id}";
+  my $repo_id = "$repository->{name}-$repository->{id}";
   my $repo_path = "$clone_dir/$repo_id";
 
-  if ( Viyond::InstallData::Metadata->load_all->[0]->{$repo_id} ) {
+  if ( Viyond::InstallData::Metadata->load_all->{$repo_id} ) {
     Viyond::Action::Upgrade->upgrade($repo_id);
   }
   else {

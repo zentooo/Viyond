@@ -16,7 +16,7 @@ use feature qw/say/;
 
 sub upgrade {
   my ($class, $name) = @_;
-  my $metadata = Viyond::InstallData::Metadata->load_all->[0];
+  my $metadata = Viyond::InstallData::Metadata->load_all;
 
   my @repo_ids = grep /^$name/, keys %$metadata;
 
@@ -40,7 +40,7 @@ sub upgrade {
 
 sub upgrade_all {
   my ($class, $name) = @_;
-  my $metadata = Viyond::InstallData::Metadata->load_all->[0];
+  my $metadata = Viyond::InstallData::Metadata->load_all;
   for my $repo_id (keys %$metadata) {
     $class->upgrade($repo_id);
   }

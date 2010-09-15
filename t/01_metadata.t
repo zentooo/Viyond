@@ -34,11 +34,11 @@ my $repository = +{
 Viyond::InstallData::Metadata->add_entry($git_uri, $repository);
 
 my $metadata = Viyond::InstallData::Metadata->load_all;
-my $repo = $metadata->[0]->{"$name:$id"};
+my $repo = $metadata->{"$name-$id"};
 
 is( $repo->{git_uri}, $git_uri, "github uri is equal to the original");
 
 
-system('rm -f ' . Viyond::Config->get_value('viyond_path') . '/metadata.yaml');
+system('rm -f ' . Viyond::Config->get_value('viyond_path') . '/metadata.json');
 
 done_testing;

@@ -4,19 +4,21 @@ use strict;
 use warnings;
 
 use Viyond::Config;
-use YAML::Tiny;
+use Path::Class;
+use JSON;
 use Carp;
 
-my $metadata_file = Viyond::Config->get_value('viyond_path') . '/metadata.yaml';
+my $metadata_file = Viyond::Config->get_value('viyond_path') . '/metadata.json';
 
 sub load_all {
   my $class = shift;
-  return YAML::Tiny->read($metadata_file) || YAML::Tiny->new();
+  return +{} unless -f $metadata_file;
+  return decode_json(file($metadata_file)->slurp);
 }
 
 sub add_entry {
   my ($class, $git_uri, $repository) = @_;
-  my $canonical_name = "$repository->{name}:$repository->{id}";
+  my $canonical_name = "$repository->{name}-$repository->{id}";
 
   my $metadata = $class->load_all();
 
@@ -26,14 +28,15 @@ sub add_entry {
     username => $repository->{username},
     description => $repository->{description},
   };
-  $metadata->[0]->{$canonical_name} = $repo_data;
+  $metadata->{$canonical_name} = $repo_data;
 
-  $metadata->write($metadata_file) or carp "cannot write metadata to $metadata_file";
+  $class->update($metadata);
 }
 
 sub update {
   my ($class, $metadata) = @_;
-  my $realdata = YAML::Tiny->new;
-  $realdata->[0] = $metadata;
-  $realdata->write($metadata_file) or carp "cannot write metadata to $metadata_file";
+  my $json = JSON->new;
+  my $data = $json->pretty->encode($metadata);
+  my $fh = file($metadata_file)->open('w') or carp "cannot write metadata to $metadata_file";
+  print $fh $data;
 }

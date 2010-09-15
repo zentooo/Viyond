@@ -20,7 +20,7 @@ sub run {
   my ($self, $opt, $args) = @_;
 
   if ($opt->{all}) {
-    for (map { $_->{name} } values %{Viyond::InstallData::Metadata->load_all->[0]}) {
+    for (map { $_->{name} } values %{Viyond::InstallData::Metadata->load_all}) {
       Viyond::Action::Remove->remove($_);
     }
   }
