@@ -71,8 +71,8 @@ sub print_repos {
   for my $repository (@$repositories) {
     print BOLD WHITE ON_BLUE $repos_num;
     print " ";
-    print CYAN "$repository->{username}/";
-    print BOLD WHITE $repository->{name};
+    print BOLD WHITE "$repository->{username}/";
+    print BOLD CYAN $repository->{name};
     if ( grep { $_ eq "$repository->{name}:$repository->{id}" } @installed_repo_ids ) {
       print " ";
       print BOLD WHITE ON_MAGENTA "[installed]";
