@@ -69,13 +69,13 @@ sub print_repos {
   my $repos_num = 1;
 
   for my $repository (@$repositories) {
-    print BOLD WHITE ON_MAGENTA $repos_num;
+    print BOLD WHITE ON_BLUE $repos_num;
     print " ";
-    print BOLD BLUE "$repository->{username}/";
+    print CYAN "$repository->{username}/";
     print BOLD WHITE $repository->{name};
     if ( grep { $_ eq "$repository->{name}:$repository->{id}" } @installed_repo_ids ) {
       print " ";
-      print BOLD WHITE ON_BLUE "[installed]";
+      print BOLD WHITE ON_MAGENTA "[installed]";
     }
     print " ";
     print "(";

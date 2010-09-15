@@ -17,7 +17,7 @@ sub run {
   $Term::ANSIColor::AUTORESET = 1;
 
   for my $repo_data (values %$metadata) {
-    print BOLD BLUE "$repo_data->{username}/";
+    print BOLD CYAN "$repo_data->{username}/";
     print BOLD WHITE "$repo_data->{name}";
     print " - $repo_data->{description}\n";
   }
