@@ -57,7 +57,9 @@ it under the same terms as Perl itself.
 
 =head1 TODO
 
-make a github repository just to test installing, upgrading and removing
-implement pathogen mode
+remove with listed numbers
+replace all YAML::Tiny with JSON::XS or others
+omit personal repository such as 'dotconfig', 'dotvim', 'vimfiles', etc ...
+implement pathogen mode?
 
 =cut

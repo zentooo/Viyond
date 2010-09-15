@@ -4,7 +4,6 @@ all_from 'lib/Viyond.pm';
 readme_from 'lib/Viyond.pm';
 
 requires 'App::Cmd';
-requires 'Config::Any';
 requires 'Data::Util';
 requires 'File::Copy::Recursive';
 requires 'File::Path';
