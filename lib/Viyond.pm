@@ -39,10 +39,10 @@ Currently it does not support vim-plugin management style with pathogen and git 
 
 You can use Viyond with your own config file ($HOME/.viyondrc) with JSON format.
 
-{
-  "viyond_path": "/home/neko/.viyond",
-  "vimfiles_path": "/home/neko/.vim"
-}
+  {
+    "viyond_path": "/home/neko/.viyond",
+    "vimfiles_path": "/home/neko/.vim"
+  }
 
 =head1 AUTHOR
 
@@ -57,9 +57,11 @@ it under the same terms as Perl itself.
 
 =head1 TODO
 
-remove with listed numbers
-replace all YAML::Tiny with JSON::XS or others
-omit personal repository such as 'dotconfig', 'dotvim', 'vimfiles', etc ...
-implement pathogen mode?
+=over 4
+
+=item * implement pathogen mode?
+
+=back
+
 
 =cut

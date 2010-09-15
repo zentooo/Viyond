@@ -69,6 +69,9 @@ sub print_repos {
   my $repos_num = 1;
 
   for my $repository (@$repositories) {
+
+    next if $repository->{name} =~ /^vim$|(dot|vim)files|dotvim|conf(ig)?/i;
+
     print BOLD WHITE ON_BLUE $repos_num;
     print " ";
     print BOLD WHITE "$repository->{username}/";

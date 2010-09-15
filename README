@@ -22,8 +22,10 @@ CONFIGURATION
     You can use Viyond with your own config file ($HOME/.viyondrc) with JSON
     format.
 
-    { "viyond_path": "/home/neko/.viyond", "vimfiles_path":
-    "/home/neko/.vim" }
+      {
+        "viyond_path": "/home/neko/.viyond",
+        "vimfiles_path": "/home/neko/.vim"
+      }
 
 AUTHOR
     zentooo <ankerasoy@gmail.com>
@@ -34,7 +36,5 @@ LICENSE
     under the same terms as Perl itself.
 
 TODO
-    remove with listed numbers replace all YAML::Tiny with JSON::XS or
-    others omit personal repository such as 'dotconfig', 'dotvim',
-    'vimfiles', etc ... implement pathogen mode?
+    *   remove with listed numbers =item * implement pathogen mode?
 

@@ -16,10 +16,15 @@ sub run {
 
   $Term::ANSIColor::AUTORESET = 1;
 
+  my $repos_num = 1;
+
   for my $repo_data (values %$metadata) {
+    print BOLD WHITE ON_BLUE $repos_num;
+    print " ";
     print BOLD WHITE "$repo_data->{username}/";
     print BOLD CYAN "$repo_data->{name}";
     print " - $repo_data->{description}\n";
+    $repos_num++;
   }
 }
 

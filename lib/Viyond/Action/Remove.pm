@@ -9,6 +9,7 @@ use Viyond::InstallData::Filelog;
 use File::Path qw/rmtree/;
 use File::chdir;
 use Path::Class;
+use Data::Util qw/:check/;
 use Carp;
 use feature qw/say/;
 
@@ -18,12 +19,18 @@ my $vimfiles_path = Viyond::Config->get_value('vimfiles_path');
 sub remove {
   my ($class, $name) = @_;
 
+  my @repo_ids;
   my $metadata = Viyond::InstallData::Metadata->load_all;
 
-  my @repo_ids = grep /^$name-repo-\w+$/, keys %$metadata;
+  if ( is_string $name && $name !~ /\d+/ ) {
+    @repo_ids = grep /^$name-repo-\w+$/, keys %$metadata;
+  }
+  elsif ( 1 <= $name && $name <= scalar keys %$metadata ) {
+    @repo_ids = ([keys %$metadata]->[$name - 1]);
+  }
 
   if ( scalar @repo_ids == 0 ) {
-    say"we cannot find the vim plugin named $name";
+    say "we cannot find the vim plugin named $name";
     return;
   }
 
