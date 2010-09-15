@@ -4,12 +4,13 @@ NAME
 
 SYNOPSIS
       viyond search neocomplcache   - search and install vim plugin
-      viyond list                   - list all installed vim plugins
+      viyond list                   - list all installed vim plugins with their numbers
       viyond remove neocomplcache   - remove existing plugin
+      viyond remove 1               - remove existing plugin with listed number
       viyond remove -all            - remove all existing plugins
       viyond upgrade                - upgrade all existing plugins
       viyond upgrade neocomplcache  - upgrade specified plugin
-      viyond add                    - execute 'git add' after chdir to .vim and .viyond with ignoring .vim/view
+      viyond add                    - execute 'git add' after chdir to .vim and .viyond. Ignores .vim/view and .viyond/repos
 
 DESCRIPTION
     Viyond is Vim plugin manager, inspired by Vimana and Yaourt. It uses
@@ -28,7 +29,7 @@ CONFIGURATION
       }
 
 AUTHOR
-    zentooo <ankerasoy@gmail.com>
+    zentooo <zentoooo@gmail.com>
 
 SEE ALSO
 LICENSE
@@ -36,5 +37,5 @@ LICENSE
     under the same terms as Perl itself.
 
 TODO
-    *   remove with listed numbers =item * implement pathogen mode?
+    *   ignore .so or .dll with add subcommand
 
