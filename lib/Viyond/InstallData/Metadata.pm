@@ -24,8 +24,9 @@ sub find {
   my $metadata = $class->load_all();
   my @repo_ids;
 
-  if ( is_string $query && $query !~ /\d+/ ) {
-    @repo_ids = grep /^$query-repo-\w+$/, keys %$metadata;
+  warn $query;
+  if ( is_string $query && $query !~ /^\d+$/ ) {
+    @repo_ids = grep /^$query/, keys %$metadata;
   }
   elsif ( 1 <= $query && $query <= scalar keys %$metadata ) {
     @repo_ids = ([keys %$metadata]->[$query - 1]);
