@@ -70,7 +70,7 @@ sub print_repos {
 
   for my $repository (@$repositories) {
 
-    next if $repository->{name} =~ /^vim$|(dot|vim)files|dotvim|conf(ig)?/i;
+    next if $repository->{name} =~ /^\.?vim$|(dot|vim)files|dotvim|conf(ig)?/i;
 
     print BOLD WHITE ON_BLUE $repos_num;
     print " ";
