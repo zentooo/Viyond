@@ -23,11 +23,14 @@ Viyond - Vim plugin manager which uses github as repository. It's still experime
 
   viyond search neocomplcache   - search and install vim plugin
   viyond list                   - list all installed vim plugins with their numbers
-  viyond remove neocomplcache   - remove existing plugin
-  viyond remove 1               - remove existing plugin with listed number
-  viyond remove -all            - remove all existing plugins
-  viyond upgrade                - upgrade all existing plugins
-  viyond upgrade neocomplcache  - upgrade specified plugin
+  viyond remove neocomplcache   - remove installed plugin
+  viyond remove 1               - remove installed plugin with listed number
+  viyond remove -all            - remove all installed plugins
+  viyond files neocomplcache    - show installed files of installed plugin
+  viyond files 1                - show installed files of installed plugin with listed number
+  viyond upgrade                - upgrade all installed plugins
+  viyond upgrade neocomplcache  - upgrade installed plugin
+  viyond upgrade 1              - upgrade installed plugin with listed number
   viyond add                    - execute 'git add' after chdir to .vim and .viyond. Ignores .vim/view and .viyond/repos
 
 =head1 DESCRIPTION
@@ -60,7 +63,7 @@ it under the same terms as Perl itself.
 
 =over 4
 
-=item * ignore .so or .dll with add subcommand, not replace files if no upgrade found, upgrade with listed numbers
+=item * ignore .so or .dll with add subcommand, not replace files if no upgrade found, viyond fav(gae?), viyond page(browser setting)
 
 =back
 

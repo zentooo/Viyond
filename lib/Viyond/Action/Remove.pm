@@ -17,24 +17,12 @@ use feature qw/say/;
 my $vimfiles_path = Viyond::Config->get_value('vimfiles_path');
 
 sub remove {
-  my ($class, $name) = @_;
+  my ($class, $query) = @_;
 
-  my @repo_ids;
   my $metadata = Viyond::InstallData::Metadata->load_all;
+  my $repo_ids = Viyond::InstallData::Metadata->find($query);
 
-  if ( is_string $name && $name !~ /\d+/ ) {
-    @repo_ids = grep /^$name-repo-\w+$/, keys %$metadata;
-  }
-  elsif ( 1 <= $name && $name <= scalar keys %$metadata ) {
-    @repo_ids = ([keys %$metadata]->[$name - 1]);
-  }
-
-  if ( scalar @repo_ids == 0 ) {
-    say "we cannot find the vim plugin named $name";
-    return;
-  }
-
-  for my $repo_id (@repo_ids) {
+  for my $repo_id (@$repo_ids) {
     say "will remove $repo_id ...";
 
     my $repo_path = Viyond::Config->get_value('viyond_path') . "/repos/$repo_id";

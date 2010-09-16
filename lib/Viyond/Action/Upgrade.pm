@@ -15,12 +15,14 @@ use feature qw/say/;
 
 
 sub upgrade {
-  my ($class, $name) = @_;
+  my ($class, $query) = @_;
+
   my $metadata = Viyond::InstallData::Metadata->load_all;
+  my $repo_ids = Viyond::InstallData::Metadata->find($query);
 
-  my @repo_ids = grep /^$name/, keys %$metadata;
+  for my $repo_id (@$repo_ids) {
+    say "will upgrade $repo_id ...";
 
-  for my $repo_id (@repo_ids) {
     my $repo_path = Viyond::Config->get_value('viyond_path') . "/repos/$repo_id";
 
     Viyond::Action::Remove->remove_vimfiles($repo_id);
