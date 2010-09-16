@@ -37,5 +37,6 @@ LICENSE
     under the same terms as Perl itself.
 
 TODO
-    *   ignore .so or .dll with add subcommand
+    *   ignore .so or .dll with add subcommand, not remove if no upgrade
+        found
 
