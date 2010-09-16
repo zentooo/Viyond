@@ -60,7 +60,7 @@ it under the same terms as Perl itself.
 
 =over 4
 
-=item * ignore .so or .dll with add subcommand, not remove if no upgrade found
+=item * ignore .so or .dll with add subcommand, not replace files if no upgrade found, upgrade with listed numbers
 
 =back
 
