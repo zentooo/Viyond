@@ -18,7 +18,7 @@ sub run {
 
   {
     local $CWD = $vimfiles_path;
-    for my $dir (dir($CWD)->children) {
+    for my $dir (dir($CWD)->children(no_hidden => 1)) {
       next unless $dir->is_dir;
       $dir =~ s/$vimfiles_path\///;
       next if $dir =~ /view/;
@@ -28,7 +28,7 @@ sub run {
 
   {
     local $CWD = $viyond_path;
-    system("git add metadata.yaml");
+    system("git add metadata.json");
     system("git add filelog/*");
   }
 }
