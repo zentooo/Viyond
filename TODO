@@ -1,0 +1,4 @@
+* ignore .so or .dll with add subcommand
+* not replace files if no diff found
+* viyond fav(gae?)
+* viyond page(add browser setting for .viyondrc)

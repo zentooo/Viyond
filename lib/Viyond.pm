@@ -59,13 +59,4 @@ zentooo E<lt>zentoooo@gmail.comE<gt>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-=head1 TODO
-
-=over 4
-
-=item * ignore .so or .dll with add subcommand, not replace files if no upgrade found, viyond fav(gae?), viyond page(browser setting)
-
-=back
-
-
 =cut
