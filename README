@@ -13,6 +13,8 @@ SYNOPSIS
       viyond upgrade                - upgrade all installed plugins
       viyond upgrade neocomplcache  - upgrade installed plugin
       viyond upgrade 1              - upgrade installed plugin with listed number
+      viyond desc neocomplcache     - print description of installed plugin
+      viyond desc 1                 - print description of installed plugin with listed number
       viyond add                    - execute 'git add' after chdir to .vim and .viyond. Ignores .vim/view and .viyond/repos
 
 DESCRIPTION
@@ -38,8 +40,4 @@ SEE ALSO
 LICENSE
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
-
-TODO
-    *   ignore .so or .dll with add subcommand, not replace files if no
-        upgrade found, viyond fav(gae?), viyond page(browser setting)
 

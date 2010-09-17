@@ -31,6 +31,8 @@ Viyond - Vim plugin manager which uses github as repository. It's still experime
   viyond upgrade                - upgrade all installed plugins
   viyond upgrade neocomplcache  - upgrade installed plugin
   viyond upgrade 1              - upgrade installed plugin with listed number
+  viyond desc neocomplcache     - print description of installed plugin
+  viyond desc 1                 - print description of installed plugin with listed number
   viyond add                    - execute 'git add' after chdir to .vim and .viyond. Ignores .vim/view and .viyond/repos
 
 =head1 DESCRIPTION
