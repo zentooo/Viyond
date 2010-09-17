@@ -34,7 +34,7 @@ sub run {
 }
 
 sub abstract {
-  "add all vimfiles after chdir to .vim/vimfiles";
+  "exec 'git add' after chdir to .vim and .viyond";
 }
 
 1;
