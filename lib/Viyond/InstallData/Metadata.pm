@@ -24,7 +24,6 @@ sub find {
   my $metadata = $class->load_all();
   my @repo_ids;
 
-  warn $query;
   if ( is_string $query && $query !~ /^\d+$/ ) {
     @repo_ids = grep /^$query/, keys %$metadata;
   }
