@@ -5,40 +5,70 @@ use File::Spec;
 use YAML::Tiny;
 use File::Copy::Recursive qw/pathmk/;
 
+use Data::Util qw/:check/;
+
 use lib 'lib';
 use Viyond::Config;
 use Viyond::InstallData::Metadata;
 
-# load_all
-pathmk(Viyond::Config->get_value('viyond_path'));
 
-my $emptydata = Viyond::InstallData::Metadata->load_all;
-ok($emptydata);
-
-
-# save
-
-my $git_uri = 'git://github.com/Shougo/neocomplcache.git';
-my $repo_path = 'neocomplcache.git';
-my $id = "repo-108625";
-my $name = "neocomplcache";
+my $git_uri = 'git://github.com/zentooo/fakeplugin_dir.git';
+my $repo_path = 'fakeplugin_dir.git';
+my $id = "repo-0";
+my $name = "fakeplugin_dir";
 my $pushed = "2010-09-06T03:56:37Z";
 my $description = "Ultimate auto-completion system for Vim.";
 
-my $repository = +{
-  id => $id,
-  name => $name,
-  pushed => $pushed,
-  description => $description,
-};
-Viyond::InstallData::Metadata->add_entry($git_uri, $repository);
+sub create_neocom_metadata {
+
+  my $repository = +{
+    id => $id,
+    name => $name,
+    pushed => $pushed,
+    description => $description,
+  };
+  Viyond::InstallData::Metadata->add_entry($git_uri, $repository);
+}
+
+
+# load_all
+
+pathmk(Viyond::Config->get_value('viyond_path'));
+
+my $original_metadata = Viyond::InstallData::Metadata->load_all;
+ok(is_hash_ref $original_metadata);
+
+
+# update
+
+Viyond::InstallData::Metadata->update($original_metadata);
 
 my $metadata = Viyond::InstallData::Metadata->load_all;
-my $repo = $metadata->{"$name-$id"};
+
+is_deeply($original_metadata, $metadata);
+
+
+# add_entry
+
+create_neocom_metadata;
+
+my $new_metadata = Viyond::InstallData::Metadata->load_all;
+
+my $repo = $new_metadata->{"$name-$id"};
 
 is( $repo->{git_uri}, $git_uri, "github uri is equal to the original");
 
+Viyond::InstallData::Metadata->update($original_metadata);
 
-system('rm -f ' . Viyond::Config->get_value('viyond_path') . '/metadata.json');
+
+# find
+
+create_neocom_metadata;
+
+my $repo_ids = Viyond::InstallData::Metadata->find($name);
+is(scalar @$repo_ids, 1, "find 1 fakeplugin_dir");
+
+Viyond::InstallData::Metadata->update($original_metadata);
+
 
 done_testing;

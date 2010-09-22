@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
-use Data::Util;
+use Data::Util qw/:check/;
 
 use lib 'lib';
 
@@ -11,18 +11,18 @@ BEGIN { use_ok ' Viyond::Config' }
 # test default settings
 
 my $config_path = "$ENV{'HOME'}/.viyondrc";
-my @config_keys = qw/nightly force_remove/;
+my @config_keys = qw/viyond_path vimfiles_path/;
 
 if ( -e $config_path ) {
   for my $key (@config_keys) {
     my $value = Viyond::Config->get_value($key);
-    ok($value == 0 || $value == 1);
+    ok(is_string $value);
   }
 }
 else {
   # test default settings
-  is(Viyond::Config->get_value('nightly'), 1);
-  is(Viyond::Config->get_value('force_remove'), 0);
+  ok(is_string Viyond::Config->get_value('viyond_path'));
+  ok(is_string Viyond::Config->get_value('vimfiles_path'));
 }
 
 

@@ -3,12 +3,33 @@ use warnings;
 
 use Test::Most;
 use Data::Util;
+use Path::Class;
+use File::Spec;
 
 use lib 'lib';
 use Viyond::InstallData::Metadata;
 use Viyond::Action::Install;
 
 BEGIN { use_ok 'Viyond::Action::Remove' }
+
+
+# purge_empty_dirs
+
+my $tmp = File::Spec->tmpdir;
+
+for (1 .. 10) {
+  system("rm -rf $tmp/viyond_empty_dirs_$_");
+  system("mkdir $tmp/viyond_empty_dirs_$_");
+}
+
+Viyond::Action::Remove->purge_empty_dirs(dir($tmp));
+
+for (1 .. 10) {
+  ok(! -d "$tmp/viyond_empty_dirs_$_", "all created empty dirs are removed");
+}
+
+
+# remove
 
 Viyond::Action::Install->install(+{
     username => "zentooo",

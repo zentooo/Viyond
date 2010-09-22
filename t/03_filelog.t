@@ -9,7 +9,8 @@ use lib 'lib';
 use Viyond::Config;
 use Viyond::InstallData::Filelog;
 
-# load
+
+# load nogthing
 
 my $repo_id = "neocomplcache-repo-108625";
 
@@ -18,7 +19,7 @@ dies_ok {
 }, "die because we do not have filelog yet";
 
 
-# save
+# save and load
 
 my @files = qw(t/03_filelog.t t/03_filelog.t);
 Viyond::InstallData::Filelog->save($repo_id, \@files);
