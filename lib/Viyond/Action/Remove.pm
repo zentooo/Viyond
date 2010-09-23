@@ -13,14 +13,11 @@ use Data::Util qw/:check/;
 use Carp;
 use feature qw/say/;
 
-use Data::Dump qw/dump/;
 
 my $vimfiles_path = Viyond::Config->get_value('vimfiles_path');
 
 sub remove {
   my ($class, $queries) = @_;
-
-  warn dump $queries;
 
   my $metadata = Viyond::InstallData::Metadata->load_all;
   my @results = map { Viyond::InstallData::Metadata->find($_) } @$queries;
