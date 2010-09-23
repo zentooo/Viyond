@@ -85,7 +85,7 @@ sub files_recursive {
   my @files;
 
   for my $entry ($basepath->children(no_hidden => 1)) {
-    if ( $entry->is_dir ) {
+    if ( $entry->is_dir  && $entry !~ /$Viyond::Config::ignores/ ) {
       push @files, @{$class->files_recursive($entry, $depth + 1)};
     }
     elsif ( ! $entry->is_dir && $depth > 0 && $entry !~ /unittest\.vim/ ) {

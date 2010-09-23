@@ -10,9 +10,9 @@ use Viyond::Config;
 use Viyond::InstallData::Filelog;
 
 
-# load nogthing
+# load nothing
 
-my $repo_id = "neocomplcache-repo-108625";
+my $repo_id = "fakeplugin_dir-repo-0";
 
 dies_ok {
   Viyond::InstallData::Metadata->load($repo_id);

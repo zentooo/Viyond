@@ -21,7 +21,7 @@ sub run {
     for my $dir (dir($CWD)->children(no_hidden => 1)) {
       next unless $dir->is_dir;
       $dir =~ s/$vimfiles_path\///;
-      next if $dir =~ /view|test/;
+      next if $dir =~ $Viyond::Config::ignores;
       system("git add $dir/*");
     }
   }
