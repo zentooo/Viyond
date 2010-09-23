@@ -13,26 +13,31 @@ use Data::Util qw/:check/;
 use Carp;
 use feature qw/say/;
 
+use Data::Dump qw/dump/;
 
 my $vimfiles_path = Viyond::Config->get_value('vimfiles_path');
 
 sub remove {
-  my ($class, $query) = @_;
+  my ($class, $queries) = @_;
+
+  warn dump $queries;
 
   my $metadata = Viyond::InstallData::Metadata->load_all;
-  my $repo_ids = Viyond::InstallData::Metadata->find($query);
+  my @results = map { Viyond::InstallData::Metadata->find($_) } @$queries;
 
-  for my $repo_id (@$repo_ids) {
-    say "will remove $repo_id ...";
+  for my $result (@results) {
+    for my $repo_id (@$result) {
+      say "will remove $repo_id ...";
 
-    my $repo_path = Viyond::Config->get_value('viyond_path') . "/repos/$repo_id";
-    rmtree($repo_path);
+      my $repo_path = Viyond::Config->get_value('viyond_path') . "/repos/$repo_id";
+      rmtree($repo_path);
 
-    $class->remove_vimfiles($repo_id);
+      $class->remove_vimfiles($repo_id);
 
-    unlink Viyond::Config->get_value('viyond_path') . "/filelog/$repo_id";
+      unlink Viyond::Config->get_value('viyond_path') . "/filelog/$repo_id";
 
-    delete $metadata->{$repo_id};
+      delete $metadata->{$repo_id};
+    }
   }
 
   Viyond::InstallData::Metadata->update($metadata);

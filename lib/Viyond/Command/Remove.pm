@@ -22,14 +22,10 @@ sub run {
   # TODO: validate args
 
   if ($opt->{all}) {
-    for (map { $_->{name} } values %{Viyond::InstallData::Metadata->load_all}) {
-      Viyond::Action::Remove->remove($_);
-    }
+    Viyond::Action::Remove->remove(\{map { $_->{name} } values %{Viyond::InstallData::Metadata->load_all}});
   }
   else {
-    for (@$args) {
-      Viyond::Action::Remove->remove($_);
-    }
+    Viyond::Action::Remove->remove($args);
   }
 }
 
