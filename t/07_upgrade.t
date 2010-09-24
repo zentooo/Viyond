@@ -24,7 +24,7 @@ ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir-repo-fak
 
 Viyond::Action::Upgrade->upgrade("fakeplugin_dir");
 
-Viyond::Action::Remove->remove("fakeplugin_dir");
+Viyond::Action::Remove->remove(["fakeplugin_dir"]);
 
 
 # upgrade all
@@ -48,7 +48,7 @@ ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_file-repo-fa
 
 Viyond::Action::Upgrade->upgrade_all;
 
-Viyond::Action::Remove->remove("fakeplugin_dir");
-Viyond::Action::Remove->remove("fakeplugin_file");
+Viyond::Action::Remove->remove(["fakeplugin_dir"]);
+Viyond::Action::Remove->remove(["fakeplugin_file"]);
 
 done_testing;

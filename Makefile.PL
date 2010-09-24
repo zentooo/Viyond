@@ -20,7 +20,7 @@ tests 't/*.t';
 
 install_script 'bin/viyond';
 
-test_requires 'Test::More';
+test_requires 'Test::More' => '0.94';
 auto_include;
 auto_install;
 WriteAll;

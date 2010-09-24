@@ -40,7 +40,7 @@ Viyond::Action::Install->install(+{
 
 ok(-d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir-repo-fakeremove", "fake repo has created");
 
-Viyond::Action::Remove->remove("fakeplugin_dir");
+Viyond::Action::Remove->remove(["fakeplugin_dir"]);
 
 ok(! -d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir-repo-fakeremove", "fake repo has removed");
 ok(! -f Viyond::Config->get_value('viyond_path') . "/filelog/fakeplugin_dir-repo-fakeremove", "fake repo's filelog has removed");
