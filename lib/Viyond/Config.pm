@@ -8,7 +8,7 @@ use Path::Class;
 use Hash::Merge::Simple qw/merge/;
 use File::Copy::Recursive qw/pathmk/;
 
-our $ignores = qr/\/(view|test|t|t_source)$/;
+our $ignores = qr/view|test|t_source|t$/;
 
 my $config_path = "$ENV{HOME}/.viyondrc";
 
