@@ -21,7 +21,7 @@ tests 't/*.t';
 install_script 'bin/viyond';
 
 test_requires 'Test::More' => '0.94';
-test_requires 'File::Spec';
+test_requires 'File::Temp';
 auto_include;
 auto_install;
 WriteAll;

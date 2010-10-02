@@ -2,13 +2,14 @@ use strict;
 
 use Test::Most;
 use YAML::Tiny;
+use File::Temp;
 use File::Copy::Recursive qw/pathmk pathrm/;
 
 use lib 'lib';
 use Viyond::Config;
 use Viyond::InstallData::Filelog;
 
-$ENV{'HOME'} = File::Spec->tmpdir;
+$ENV{'HOME'} = File::Temp::tempdir;
 
 # load nothing
 

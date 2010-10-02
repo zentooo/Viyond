@@ -4,7 +4,7 @@ use warnings;
 use Test::Most;
 use Data::Util;
 use Path::Class;
-use File::Spec;
+use File::Temp;
 
 use lib 'lib';
 use Viyond::InstallData::Metadata;
@@ -13,12 +13,12 @@ use Viyond::Action::Install;
 BEGIN { use_ok 'Viyond::Action::Remove' }
 
 
-$ENV{'HOME'} = File::Spec->tmpdir;
+$ENV{'HOME'} = File::Temp::tempdir;
 
 
 # purge_empty_dirs
 
-my $tmp = File::Spec->tmpdir;
+my $tmp = File::Temp::tempdir;
 
 for (1 .. 10) {
   system("rm -rf $tmp/viyond_empty_dirs_$_");

@@ -3,9 +3,9 @@ use warnings;
 
 use Test::More;
 use Path::Class;
-use File::Spec;
+use File::Temp;
 
-$ENV{'HOME'} = File::Spec->tmpdir;
+$ENV{'HOME'} = File::Temp::tempdir;
 
 use lib 'lib';
 use Viyond::Action::Install;

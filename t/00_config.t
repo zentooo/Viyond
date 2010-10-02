@@ -3,13 +3,13 @@ use warnings;
 
 use Test::More;
 use Data::Util qw/:check/;
-use File::Spec;
+use File::Temp;
 
 use lib 'lib';
 
 BEGIN { use_ok ' Viyond::Config' }
 
-$ENV{'HOME'} = File::Spec->tmpdir;
+$ENV{'HOME'} = File::Temp::tempdir;
 
 # test default settings
 

@@ -1,19 +1,18 @@
 use strict;
 
 use Test::More;
-use File::Spec;
 use YAML::Tiny;
 use File::Copy::Recursive qw/pathmk/;
 
 use Data::Util qw/:check/;
-use File::Spec;
+use File::Temp;
 
 use lib 'lib';
 use Viyond::Config;
 use Viyond::InstallData::Metadata;
 
 
-$ENV{'HOME'} = File::Spec->tmpdir;
+$ENV{'HOME'} = File::Temp::tempdir;
 
 
 my $git_uri = 'git://github.com/zentooo/fakeplugin_dir.git';
