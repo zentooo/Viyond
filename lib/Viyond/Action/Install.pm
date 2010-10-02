@@ -13,13 +13,14 @@ use Viyond::InstallData::Filelog;
 
 use Viyond::Action::Upgrade;
 
-my $clone_dir = Viyond::Config->get_value('viyond_path') . "/repos";
-pathmk $clone_dir unless -d $clone_dir;
 
 sub install {
   my ($class, $repository) = @_;
   my $git_uri = "git://github.com/$repository->{username}/$repository->{name}.git";
   my $repo_id = "$repository->{name}-$repository->{id}";
+
+  my $clone_dir = Viyond::Config->get_value('viyond_path') . "/repos";
+  pathmk $clone_dir unless -d $clone_dir;
   my $repo_path = "$clone_dir/$repo_id";
 
   if ( Viyond::InstallData::Metadata->load_all->{$repo_id} ) {

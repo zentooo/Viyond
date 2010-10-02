@@ -10,10 +10,10 @@ use Data::Util qw/:check/;
 use Carp;
 use feature qw/say/;
 
-my $metadata_file = Viyond::Config->get_value('viyond_path') . '/metadata.json';
 
 sub load_all {
   my $class = shift;
+  my $metadata_file = Viyond::Config->get_value('viyond_path') . '/metadata.json';
   return +{} unless -f $metadata_file;
   return decode_json(file($metadata_file)->slurp);
 }
@@ -58,8 +58,11 @@ sub add_entry {
 
 sub update {
   my ($class, $metadata) = @_;
+  my $metadata_file = Viyond::Config->get_value('viyond_path') . '/metadata.json';
   my $json = JSON->new;
   my $data = $json->pretty->encode($metadata);
   my $fh = file($metadata_file)->open('w') or carp "cannot write metadata to $metadata_file";
   print $fh $data;
 }
+
+1;

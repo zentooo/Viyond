@@ -6,18 +6,23 @@ use YAML::Tiny;
 use File::Copy::Recursive qw/pathmk/;
 
 use Data::Util qw/:check/;
+use File::Spec;
 
 use lib 'lib';
 use Viyond::Config;
 use Viyond::InstallData::Metadata;
 
 
+$ENV{'HOME'} = File::Spec->tmpdir;
+
+
 my $git_uri = 'git://github.com/zentooo/fakeplugin_dir.git';
 my $repo_path = 'fakeplugin_dir.git';
-my $id = "repo-0";
+my $id = "repo-fakemetadata";
 my $name = "fakeplugin_dir";
 my $pushed = "2010-09-06T03:56:37Z";
 my $description = "Ultimate auto-completion system for Vim.";
+
 
 sub create_neocom_metadata {
 

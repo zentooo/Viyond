@@ -13,6 +13,9 @@ use Viyond::Action::Install;
 BEGIN { use_ok 'Viyond::Action::Remove' }
 
 
+$ENV{'HOME'} = File::Spec->tmpdir;
+
+
 # purge_empty_dirs
 
 my $tmp = File::Spec->tmpdir;

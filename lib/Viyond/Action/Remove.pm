@@ -14,8 +14,6 @@ use Carp;
 use feature qw/say/;
 
 
-my $vimfiles_path = Viyond::Config->get_value('vimfiles_path');
-
 sub remove {
   my ($class, $queries) = @_;
 
@@ -58,14 +56,14 @@ sub remove_vimfiles {
 sub remove_vimfile {
   my ($class, $filename) = @_;
   {
-    local $CWD = $vimfiles_path;
+    local $CWD = Viyond::Config->get_value('vimfiles_path');
     unlink $filename;
   }
 }
 
 sub purge_empty_dirs {
   my ($class, $dir) = @_;
-  my $base_dir = $dir || dir($vimfiles_path);
+  my $base_dir = $dir || dir(Viyond::Config->get_value('vimfiles_path'));
   my @dirs = grep { $_->is_dir } $base_dir->children;
 
   for (@dirs) {

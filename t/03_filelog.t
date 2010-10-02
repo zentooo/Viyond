@@ -1,7 +1,6 @@
 use strict;
 
 use Test::Most;
-use File::Spec;
 use YAML::Tiny;
 use File::Copy::Recursive qw/pathmk pathrm/;
 
@@ -9,6 +8,7 @@ use lib 'lib';
 use Viyond::Config;
 use Viyond::InstallData::Filelog;
 
+$ENV{'HOME'} = File::Spec->tmpdir;
 
 # load nothing
 

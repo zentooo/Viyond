@@ -5,8 +5,11 @@ use Test::More;
 use Path::Class;
 use File::Spec;
 
+$ENV{'HOME'} = File::Spec->tmpdir;
+
 use lib 'lib';
 use Viyond::Action::Install;
+
 
 # files_recursive
 
@@ -51,7 +54,7 @@ system("touch $tmpvim/my.vim");
 system("touch $tmpvim/me.vim");
 system("touch $tmpvim/mine.vim");
 
-my $files = Viyond::Action::Install->get_vimfiles(dir($tmpvim));
+$files = Viyond::Action::Install->get_vimfiles(dir($tmpvim));
 is(scalar @$files, 4, "tmpdir has 4 .vim files");
 
 done_testing;

@@ -3,13 +3,15 @@ use warnings;
 
 use Test::More;
 use Data::Util;
+use File::Spec;
 
 use lib 'lib';
 use Viyond::Action::Install;
 use Viyond::Action::Remove;
 
-BEGIN { use_ok 'Viyond::Action::Upgrade' }
+$ENV{'HOME'} = File::Spec->tmpdir;
 
+BEGIN { use_ok 'Viyond::Action::Upgrade' }
 
 # upgrade
 

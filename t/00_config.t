@@ -3,10 +3,13 @@ use warnings;
 
 use Test::More;
 use Data::Util qw/:check/;
+use File::Spec;
 
 use lib 'lib';
 
 BEGIN { use_ok ' Viyond::Config' }
+
+$ENV{'HOME'} = File::Spec->tmpdir;
 
 # test default settings
 
@@ -21,8 +24,8 @@ if ( -e $config_path ) {
 }
 else {
   # test default settings
-  ok(is_string Viyond::Config->get_value('viyond_path'));
-  ok(is_string Viyond::Config->get_value('vimfiles_path'));
+  ok(is_string(Viyond::Config->get_value('viyond_path')));
+  ok(is_string(Viyond::Config->get_value('vimfiles_path')));
 }
 
 

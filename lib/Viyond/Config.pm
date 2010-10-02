@@ -10,15 +10,16 @@ use File::Copy::Recursive qw/pathmk/;
 
 our $ignores = qr/view|test|t_source|t$/;
 
-my $config_path = "$ENV{HOME}/.viyondrc";
-
-my $default_config = +{
-  vimfiles_path => ($^O eq 'MSWin32') ? "$ENV{'HOME'}/vimfiles" : "$ENV{'HOME'}/.vim",
-  viyond_path => ($^O eq 'MSWin32') ? "$ENV{'HOME'}/viyond" : "$ENV{'HOME'}/.viyond",
-};
 
 sub get_value {
   my ($class, $key) = @_;
+
+  my $config_path = "$ENV{HOME}/.viyondrc";
+
+  my $default_config = +{
+    vimfiles_path => ($^O eq 'MSWin32') ? "$ENV{'HOME'}/vimfiles" : "$ENV{'HOME'}/.vim",
+    viyond_path => ($^O eq 'MSWin32') ? "$ENV{'HOME'}/viyond" : "$ENV{'HOME'}/.viyond",
+  };
 
   return $default_config->{$key} unless -e $config_path;
 
