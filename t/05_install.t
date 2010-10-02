@@ -44,7 +44,7 @@ ok(1);
 
 my $tmpvim = File::Spec->tmpdir . "/vimfiles_viyond";
 system("rm -rf $tmpvim");
-system("mkdir $tmpvim");
+mkdir $tmpvim;
 
 my $nofiles = Viyond::Action::Install->get_vimfiles(dir($tmpvim));
 is(scalar @$nofiles, 0, "tmpdir has not .vim files");

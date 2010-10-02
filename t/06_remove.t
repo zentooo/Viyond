@@ -22,7 +22,7 @@ my $tmp = File::Temp::tempdir;
 
 for (1 .. 10) {
   system("rm -rf $tmp/viyond_empty_dirs_$_");
-  system("mkdir $tmp/viyond_empty_dirs_$_");
+  mkdir "$tmp/viyond_empty_dirs_$_";
 }
 
 Viyond::Action::Remove->purge_empty_dirs(dir($tmp));
