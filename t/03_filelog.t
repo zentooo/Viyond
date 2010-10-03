@@ -17,7 +17,7 @@ my $repo_id = "fakeplugin_dir-repo-0";
 
 dies_ok {
   Viyond::InstallData::Metadata->load($repo_id);
-}, "die because we do not have filelog yet";
+} "die because we do not have filelog yet";
 
 
 # save and load
