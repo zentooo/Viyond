@@ -9,8 +9,14 @@ use File::Copy::Recursive qw/pathmk/;
 
 use Viyond::Config;
 
-my $viyond_dir = Viyond::Config->get_value('viyond_path');
-pathmk $viyond_dir unless -d $viyond_dir;
+sub run {
+    my ($self) = shift;
+
+    my $viyond_dir = Viyond::Config->get_value('viyond_path');
+    pathmk $viyond_dir unless -d $viyond_dir;
+
+    return $self->SUPER::run(@_);
+}
 
 1;
 __END__
