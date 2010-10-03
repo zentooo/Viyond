@@ -2,14 +2,14 @@ use strict;
 
 use Test::Most;
 use YAML::Tiny;
-use File::Temp;
+use File::Temp qw/tempdir/;
 use File::Copy::Recursive qw/pathmk pathrm/;
 
 use lib 'lib';
 use Viyond::Config;
 use Viyond::InstallData::Filelog;
 
-$ENV{'HOME'} = File::Temp::tempdir;
+$ENV{'HOME'} = tempdir CLEANUP => 1;
 
 # load nothing
 
@@ -32,7 +32,5 @@ my @filenames = map {
 } @$filelog;
 
 is_deeply(\@filenames, \@files);
-
-system("rm -rf " . Viyond::Config->get_value('viyond_path') . '/filelog/' . $repo_id);
 
 done_testing;

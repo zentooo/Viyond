@@ -4,7 +4,7 @@ use warnings;
 use Test::Most;
 use Data::Util;
 use Path::Class;
-use File::Temp;
+use File::Temp qw/tempdir/;
 
 use lib 'lib';
 use Viyond::InstallData::Metadata;
@@ -13,16 +13,15 @@ use Viyond::Action::Install;
 BEGIN { use_ok 'Viyond::Action::Remove' }
 
 
-$ENV{'HOME'} = File::Temp::tempdir;
+$ENV{'HOME'} = tempdir CLEANUP => 1;
 
 
 # purge_empty_dirs
 
-my $tmp = File::Temp::tempdir;
+my $tmp = tempdir CLEANUP => 1;
 
 for (1 .. 10) {
-  system("rm -rf $tmp/viyond_empty_dirs_$_");
-  mkdir "$tmp/viyond_empty_dirs_$_";
+  mkdir "$tmp/viyond_empty_dirs_$_" or die $!;
 }
 
 Viyond::Action::Remove->purge_empty_dirs(dir($tmp));
@@ -49,8 +48,5 @@ ok(! -d Viyond::Config->get_value('viyond_path') . "/repos/fakeplugin_dir-repo-f
 ok(! -f Viyond::Config->get_value('viyond_path') . "/filelog/fakeplugin_dir-repo-fakeremove", "fake repo's filelog has removed");
 
 is(Viyond::InstallData::Metadata->load_all->{"fakeplugin_dir-repo-fakeremove"}, undef, "feke repo metadata has removed");
-
-
-ok(1);
 
 done_testing;
