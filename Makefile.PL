@@ -20,6 +20,11 @@ tests 't/*.t';
 
 install_script 'bin/viyond';
 
+unless (can_run 'git') {
+    print "*** `git` command not installed!!\n";
+    exit 1;
+}
+
 test_requires 'Test::More' => '0.94';
 test_requires 'File::Temp';
 auto_include;
