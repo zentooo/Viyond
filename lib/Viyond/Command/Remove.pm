@@ -9,8 +9,6 @@ use Viyond::Action::Remove;
 use Viyond::InstallData::Metadata;
 use Carp;
 use feature qw/say/;
-use Data::Dump qw/dump/;
-
 
 sub opt_spec {
   return (
